@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="local-logic-widget"></div>
+
+<script type="text/javascript">
+    var myVar;
+
+    function myFunction() {
+        myVar = setTimeout(getLocallogic , 1000);
+    }
+
+    window.onload = function() {
+        myFunction();
+    };
+
+    (function (window, document) {
+        var s = document.createElement("script");
+        s.setAttribute("src", "https://cdn.locallogic.co/widget-v3/assets/js/latest.js");
+        s.setAttribute("type", "text/javascript");
+        s.onload = function () {
+            var w = new locallogic.Widget("local-logic-widget", {
+                lat: "45.5605953",
+                lng: "-73.7021055",
+                color: "#017f8f",
+                locale: "en",
+                token: "b8514c0d93933fb5102769d01b28f4f2aceb02716b7ca62a7d26dff3917bdbf6540b73f01791310f"
+            });
+        };
+        document.getElementsByTagName("head")[0].appendChild(s);
+    })(window, document);
+
+    function getLocallogic() {
+        var mainElement = document.getElementsByClassName("ll-list ps ps--theme_default ps--active-y");
+//        for (var i = 0; i ≤ 12; i++) {
+            console.log("child 0", mainElement[0].children[0]);
+            console.log("child 1", mainElement[0].children[1]);
+            console.log("child 2", mainElement[0].children[2]);
+            console.log("child 3", mainElement[0].children[3]);
+            console.log("child 4", mainElement[0].children[4]);
+            console.log("child 5", mainElement[0].children[5]);
+            console.log("child 6", mainElement[0].children[6]);
+            console.log("child 7", mainElement[0].children[7]);
+            console.log("child 8", mainElement[0].children[8]);
+            console.log("child 9", mainElement[0].children[9]);
+            console.log("child 10", mainElement[0].children[10]);
+            console.log("child 11", mainElement[0].children[11]);
+            console.log("child 12", mainElement[0].children[12]);
+            console.log("child 13", mainElement[0].children[13]);
+//        }
+    }
+
+</script>
+</body>
+</html>
+
+
+
