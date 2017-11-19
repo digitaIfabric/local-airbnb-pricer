@@ -10,6 +10,8 @@ function initMap() {
     });
 }
 
+var contentString = '<p>Suggested Price: $150 CAD</p>'
+
 function geocodeAddress(geocoder, resultsMap) {
     var address = document.getElementById('address').value;
     geocoder.geocode({'address': address}, function(results, status) {
@@ -19,6 +21,12 @@ function geocodeAddress(geocoder, resultsMap) {
                 map: resultsMap,
                 position: results[0].geometry.location
             });
+            var infowindow = new google.maps.InfoWindow({
+                content: contentString
+            });
+            marker.addListener('click', function() {
+                infowindow.open(map, marker);
+            });
             var address_lat = marker.getPosition().lat();
             var address_lng = marker.getPosition().lng();
             console.log("position: ", address_lat,", ", address_lng)
@@ -26,4 +34,7 @@ function geocodeAddress(geocoder, resultsMap) {
             alert('Geocode was not successful for the following reason: ' + status);
         }
     });
+
+
 }
+
