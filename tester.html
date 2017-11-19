@@ -9,49 +9,63 @@
 
 <script type="text/javascript">
     var myVar;
+    var dataHolder = [];
 
     function myFunction() {
-        myVar = setTimeout(getLocallogic , 1000);
+        testMethod("45.5605953", "-73.7021055");
+        testMethod("45.49998","-73.558147");
+        console.log("where ma data", dataHolder);
+//        myVar = setTimeout(getLocalLogic , 3000);
     }
 
     window.onload = function() {
         myFunction();
     };
 
-    (function (window, document) {
-        var s = document.createElement("script");
-        s.setAttribute("src", "https://cdn.locallogic.co/widget-v3/assets/js/latest.js");
-        s.setAttribute("type", "text/javascript");
-        s.onload = function () {
-            var w = new locallogic.Widget("local-logic-widget", {
-                lat: "45.5605953",
-                lng: "-73.7021055",
-                color: "#017f8f",
-                locale: "en",
-                token: "b8514c0d93933fb5102769d01b28f4f2aceb02716b7ca62a7d26dff3917bdbf6540b73f01791310f"
-            });
-        };
-        document.getElementsByTagName("head")[0].appendChild(s);
-    })(window, document);
+    function testMethod(latDegree, longDegree) {
+        (function (window, document) {
+            var s = document.createElement("script");
+            s.setAttribute("src", "https://cdn.locallogic.co/widget-v3/assets/js/latest.js");
+            s.setAttribute("type", "text/javascript");
+            s.onload = function () {
+                var w = new locallogic.Widget("local-logic-widget", {
+                    lat: latDegree,
+                    lng: longDegree,
+                    color: "#017f8f",
+                    locale: "en",
+                    token: "b8514c0d93933fb5102769d01b28f4f2aceb02716b7ca62a7d26dff3917bdbf6540b73f01791310f"
+                });
+            };
+            document.getElementsByTagName("head")[0].appendChild(s);
+            setTimeout(getLocalLogic, 3000);
+        })(window, document);
+    }
 
-    function getLocallogic() {
+    function getLocalLogic() {
         var mainElement = document.getElementsByClassName("ll-list ps ps--theme_default ps--active-y");
-//        for (var i = 0; i ≤ 12; i++) {
-            console.log("child 0", mainElement[0].children[0]);
-            console.log("child 1", mainElement[0].children[1]);
-            console.log("child 2", mainElement[0].children[2]);
-            console.log("child 3", mainElement[0].children[3]);
-            console.log("child 4", mainElement[0].children[4]);
-            console.log("child 5", mainElement[0].children[5]);
-            console.log("child 6", mainElement[0].children[6]);
-            console.log("child 7", mainElement[0].children[7]);
-            console.log("child 8", mainElement[0].children[8]);
-            console.log("child 9", mainElement[0].children[9]);
-            console.log("child 10", mainElement[0].children[10]);
-            console.log("child 11", mainElement[0].children[11]);
-            console.log("child 12", mainElement[0].children[12]);
-            console.log("child 13", mainElement[0].children[13]);
-//        }
+        var htmlText;
+        var rating;
+        var category;
+        var ratings = {};
+        for(var i=0; i<mainElement[0].children.length;i++)
+        {
+            category = "";
+            rating = "";
+            htmlText  = mainElement[0].children[i].children[0].innerText;
+            for(var j=0; j<htmlText.length;j++){
+                if((htmlText.charCodeAt(j) >= 65 && htmlText.charCodeAt(j) <= 90) || (htmlText.charCodeAt(j) >= 97 && htmlText.charCodeAt(j) <= 122)){
+                    category += htmlText.charAt(j);
+                }
+                else if((htmlText.charCodeAt(j) >= 48 && htmlText.charCodeAt(j) <= 57)){
+                    rating += htmlText.charAt(j);
+                }
+            }
+            if(category.length != 0){
+                ratings[category] = rating;
+            }
+        }
+        dataHolder.push(ratings);
+        console.log("where nigga", ratings);
     }
 
 </script>
