@@ -33,4 +33,4 @@
 #### Python, keras, tensorflow, Node.js, google maps api, google geocoding API, Local Logic API
 
 ## Screenshots
-![main](https://github.com/digitalfabric92/local-airbnb-pricer/images/screenshot1.png)
+![main](https://github.com/digitalfabric92/local-airbnb-pricer/blob/google-maps/images/screeshot1.png)
