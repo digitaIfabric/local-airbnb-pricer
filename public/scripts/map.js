@@ -15,9 +15,165 @@ function initMap() {
 
 
     var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 11,
+        zoom: 12,
         center: {lat: 45.5008033, lng: -73.5747155}
     });
+
+    // ======================== POINT 1 ===================================
+    var contentString = '<h3>Suggested price: 49</h3>' +
+        '<h3>Actual price: 49</h3>' +
+        '<p>Bedrooms: 1</p>' +
+        '<p>Bathrooms: 1</p>' +
+        '<p># of guests: 1</p>' +
+        '<p>min_nights: 1</p>';
+
+    var infowindow1 = new google.maps.InfoWindow({
+        content: contentString
+    });
+
+    var marker1 = new google.maps.Marker({
+        position: {lat: 45.49331305, lng: -73.62596046},
+        map: map,
+        title: '1) 49 CAD'
+    });
+    marker1.addListener('click', function() {
+        infowindow1.open(map, marker1);
+    });
+    // ======================================================================
+
+    // ======================== POINT 2 ===================================
+    var contentString = '<h3>Suggested price: 51</h3>' +
+        '<h3>Actual price: 50</h3>' +
+        '<p>Bedrooms: 1</p>' +
+        '<p>Bathrooms: 1</p>' +
+        '<p># of guests: 1</p>' +
+        '<p>min_nights: 3</p>';
+
+    var infowindow2 = new google.maps.InfoWindow({
+        content: contentString
+    });
+
+    var marker2 = new google.maps.Marker({
+        position: {lat: 45.4728219, lng: -73.607367},
+        map: map,
+        title: '1) 49 CAD'
+    });
+    marker2.addListener('click', function() {
+        infowindow2.open(map, marker2);
+    });
+    // ======================================================================
+
+    // ======================== POINT 3 ===================================
+    var contentString = '<h3>Suggested price: 38</h3>' +
+        '<h3>Actual price: 37</h3>' +
+        '<p>Bedrooms: 1</p>' +
+        '<p>Bathrooms: 1</p>' +
+        '<p># of guests: 1</p>' +
+        '<p>min_nights: 1</p>';
+
+    var infowindow3 = new google.maps.InfoWindow({
+        content: contentString
+    });
+
+    var marker3 = new google.maps.Marker({
+        position: {lat: 45.5350153, lng: -73.618069},
+        map: map,
+        title: '1) 49 CAD'
+    });
+    marker3.addListener('click', function() {
+        infowindow3.open(map, marker3);
+    });
+    // ======================================================================
+
+    // ======================== POINT 4 ===================================
+    var contentString = '<h3>Suggested price: 45</h3>' +
+        '<h3>Actual price: 43</h3>' +
+        '<p>Bedrooms: 1</p>' +
+        '<p>Bathrooms: 1</p>' +
+        '<p># of guests: 1</p>' +
+        '<p>min_nights: 1</p>';
+
+    var infowindow4 = new google.maps.InfoWindow({
+        content: contentString
+    });
+
+    var marker4 = new google.maps.Marker({
+        position: {lat: 45.4785206, lng: -73.61789},
+        map: map,
+        title: '1) 49 CAD'
+    });
+    marker4.addListener('click', function() {
+        infowindow4.open(map, marker4);
+    });
+    // ======================================================================
+
+    // ======================== POINT 5 ===================================
+    var contentString = '<h3>Suggested price: 51</h3>' +
+        '<h3>Actual price: 50</h3>' +
+        '<p>Bedrooms: 1</p>' +
+        '<p>Bathrooms: 1</p>' +
+        '<p># of guests: 1</p>' +
+        '<p>min_nights: 3</p>';
+
+    var infowindow5 = new google.maps.InfoWindow({
+        content: contentString
+    });
+
+    var marker5 = new google.maps.Marker({
+        position: {lat: 45.54377677, lng:	-73.62492963},
+        map: map,
+        title: '1) 49 CAD'
+    });
+    marker5.addListener('click', function() {
+        infowindow5.open(map, marker5);
+    });
+    // ======================================================================
+
+    // ======================== POINT 6 ===================================
+    var contentString = '<h3>Suggested price: 38</h3>' +
+        '<h3>Actual price: 37</h3>' +
+        '<p>Bedrooms: 0</p>' +
+        '<p>Bathrooms: 1</p>' +
+        '<p># of guests: 1</p>' +
+        '<p>min_nights: 3</p>';
+
+    var infowindow6 = new google.maps.InfoWindow({
+        content: contentString
+    });
+
+    var marker6 = new google.maps.Marker({
+        position: {lat: 45.47268257, lng: -73.60664348},
+        map: map,
+        title: '1) 49 CAD'
+    });
+    marker6.addListener('click', function() {
+        infowindow6.open(map, marker6);
+    });
+    // ======================================================================
+
+    // ======================== POINT 7 ===================================
+    var contentString = '<h3>Suggested price: 55</h3>' +
+        '<h3>Actual price: 63</h3>' +
+        '<p>Bedrooms: 2</p>' +
+        '<p>Bathrooms: 1</p>' +
+        '<p># of guests: 2</p>' +
+        '<p>min_nights: 1</p>';
+
+    var infowindow7 = new google.maps.InfoWindow({
+        content: contentString
+    });
+
+    var marker7 = new google.maps.Marker({
+        position: {lat: 45.4580748, lng: -73.56901},
+        map: map,
+        title: '1) 49 CAD'
+    });
+    marker7.addListener('click', function() {
+        infowindow7.open(map, marker7);
+    });
+    // ======================================================================
+
+
     var geocoder = new google.maps.Geocoder();
 
     document.getElementById('submit').addEventListener('click', function() {
@@ -29,9 +185,17 @@ function initMap() {
     map.setMapTypeId('styled_map');
 }
 
-// var contentString = `<p>Suggested Price: "${price}" CAD</p>`
+
 
 function geocodeAddress(geocoder, styledMap) {
+    var contentString = '<h3>Suggested price: 49</h3>' +
+        '<h3>Actual price: 49</h3>' +
+        '<p>Bedrooms: 1</p>' +
+        '<p>Bathrooms: 1</p>' +
+        '<p># of guests: 1</p>' +
+        '<p>min_nights: 1</p>';
+
+
     var address = document.getElementById('address').value;
     geocoder.geocode({'address': address}, function(results, status) {
         if (status === 'OK') {
@@ -41,8 +205,8 @@ function geocodeAddress(geocoder, styledMap) {
                 position: results[0].geometry.location
             });
             var infowindow = new google.maps.InfoWindow({
-                // content: contentString;
-                content: '<p>Suggested Price: $150 CAD</p>'
+                content: contentString
+                // content: '<p>Suggested Price: $150 CAD</p>'
             });
             marker.addListener('click', function() {
                 infowindow.open(map, marker);
@@ -56,4 +220,7 @@ function geocodeAddress(geocoder, styledMap) {
     });
 
 }
+
+
+
 
