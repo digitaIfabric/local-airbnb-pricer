@@ -3,9 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./public/stylesheets/style.css" type="text/css"/>
+
+    <!-- json 2 csv script -->
+    <script src="./json2csv.js" type="text/javascript"></script>
+
 </head>
 <body>
 <div id="local-logic-widget"></div>
+<div id="floating-panel">
+    <input id="address" type="textbox" value="Montreal, QC">
+    <input id="submit" type="button" value="Geocode">
+</div>
+<div id="map"></div>
 
 <script type="text/javascript">
     var myVar;
@@ -69,6 +81,14 @@
     }
 
 </script>
+
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCp-sq3hLvmEzuL1LTskv64amNtI3qAo4A&callback=initMap">
+</script>
+
+<!-- David map script -->
+<script src="./public/scripts/map.js" type="text/javascript"></script>
+
 </body>
 </html>
 
