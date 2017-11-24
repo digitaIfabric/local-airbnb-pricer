@@ -7,23 +7,12 @@
 </head>
 <body>
 <div id="local-logic-widget"></div>
+<button onclick="start()">Start</button>
+<input type="file" id="csvFileInput" onchange="handleFiles(this.files)"
+       accept=".csv">
+
 
 <script type="text/javascript">
-    var myVar;
-    var dataHolder = [];
-
-    function myFunction() {
-        testMethod("45.49998","-73.558147");
-//        testMethod("45.5605953", "-73.7021055");
-        //testMethod("45.49998","-73.558147");
-        console.log("where ma data", dataHolder);
-//        myVar = setTimeout(getLocalLogic , 3000);
-    }
-
-    window.onload = function() {
-        myFunction();
-    };
-
     function testMethod(latDegree, longDegree) {
         (function (window, document) {
             var s = document.createElement("script");
@@ -38,40 +27,57 @@
                     token: "b8514c0d93933fb5102769d01b28f4f2aceb02716b7ca62a7d26dff3917bdbf6540b73f01791310f"
                 });
             };
+//            console.log(document.getElementsByTagName("head")[0]);
+//            console.log("ssss",s);
             document.getElementsByTagName("head")[0].appendChild(s);
-            setTimeout(getLocalLogic, 3000);
+//            document.getElementByTagName("head")[0].replaceChild(s,"<style type="text/css"" )
+            setTimeout(getLocalLogic, 5000, latDegree, longDegree);
         })(window, document);
     }
 
-    function getLocalLogic() {
+    function getLocalLogic(lat, lng) {
         var mainElement = document.getElementsByClassName("ll-list ps ps--theme_default ps--active-y");
         var htmlText;
         var rating;
         var category;
-        var copy;
-        var ratings = {};
-        for(var i=0; i<mainElement[0].children.length;i++)
-        {
-            category = "";
-            rating = "";
-            htmlText  = mainElement[0].children[i].children[0].innerText;
-            for(var j=0; j<htmlText.length;j++){
-                if((htmlText.charCodeAt(j) >= 65 && htmlText.charCodeAt(j) <= 90) || (htmlText.charCodeAt(j) >= 97 && htmlText.charCodeAt(j) <= 122)){
-                    category += htmlText.charAt(j);
+//        var copy = {};
+        var ratings = {lat: lat, lng:lng};
+        var tester = [];
+        try {
+            for (var i = 0; i < mainElement[0].children.length; i++) {
+                category = "";
+                rating = "";
+                htmlText = mainElement[0].children[i].children[0].innerText;
+                for (var j = 0; j < htmlText.length; j++) {
+                    if ((htmlText.charCodeAt(j) >= 65 && htmlText.charCodeAt(j) <= 90) || (htmlText.charCodeAt(j) >= 97 && htmlText.charCodeAt(j) <= 122)) {
+                        category += htmlText.charAt(j);
+                    }
+                    else if ((htmlText.charCodeAt(j) >= 48 && htmlText.charCodeAt(j) <= 57)) {
+                        rating += htmlText.charAt(j);
+                    }
                 }
-                else if((htmlText.charCodeAt(j) >= 48 && htmlText.charCodeAt(j) <= 57)){
-                    rating += htmlText.charAt(j);
+                if (category.length != 0) {
+                    ratings[category] = rating;
                 }
-            }
-            if(category.length != 0){
-                ratings[category] = rating;
             }
         }
-        dataHolder.push(JSON.parse(JSON.stringify(ratings)));
+        catch(e){
+            console.log("craashed");
+            callonException();
+            return 0;
+        }
+        document.getElementById("local-logic-widget").innerHTML = "";
+//        dataHolder.push(JSON.parse(JSON.stringify(ratings)));
+//        tester.push(JSON.stringify(ratings));
+//        console.log(tester);
+//        copy = Object.assign({}, ratings);
+//        console.log("copy made?", copy);
         console.log("where nigga", ratings);
+        makeJSONObject(ratings);
     }
 
-    write();
+
+
 
 
 </script>
